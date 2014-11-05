@@ -5,7 +5,7 @@
 ## Login   <flaman_m@etna-alternance.net>
 ## 
 ## Started on  Mon Nov  3 16:33:12 2014 FLAMANT Morgane
-## Last update Wed Nov  5 16:57:54 2014 FLAMANT Morgane
+## Last update Wed Nov  5 17:03:42 2014 FLAMANT Morgane
 ##
 
 nbr=0
@@ -134,7 +134,7 @@ do echo "Aller on tape un nombre"
 	fi
     fi
     else
-	echo "J'attend une valeur entre 0 et 100"
+	echo "J'attends une valeur entre 0 et 100"
 	nbr=$(($nbr-1))
     fi
     nbr=$(($nbr+1)) 
