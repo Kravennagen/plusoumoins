@@ -5,7 +5,7 @@
 ## Login   <flaman_m@etna-alternance.net>
 ## 
 ## Started on  Mon Nov  3 16:33:12 2014 FLAMANT Morgane
-## Last update Wed Nov  5 16:20:36 2014 FLAMANT Morgane
+## Last update Wed Nov  5 16:57:54 2014 FLAMANT Morgane
 ##
 
 nbr=0
@@ -32,6 +32,8 @@ read nombre
 stty echo 
 echo "On joue avec des mines? o/n"
 read mine
+regex="^[0-9]*[0-9]$"
+
 while [ $nombre -gt 100 ] || [ $nombre -lt 0]
 do
 echo "Entre 0 et 100"
@@ -45,7 +47,8 @@ nh=1
 else 
 clear
 echo "Bonjour, $USER,"
-echo "on joue avec des mines o/n"
+echo "Vous devez choisir un nombre entre 100 et 0, vous avez 10 chances"
+echo "Ah, j'oubliais, on joue avec des mines o/n"
 read mine
 
 echo "A vous de jouer"
@@ -58,7 +61,7 @@ do echo "Aller on tape un nombre"
     nbr2=$RANDOM
     let "nbr2 %= 100"
     else 
-    nbr2=1000
+	nbr2=1000
     fi
    
     let "got = 10 - $nbr"
@@ -71,7 +74,7 @@ do echo "Aller on tape un nombre"
     read chiffre
     if [ "$chiffre" = "$nbr2"  ]
     then
-	echo "Oooops, vous etes tomber sur une mine"
+	echo "Oooops, vous etes sur une mine"
 	exit
     fi
     
@@ -109,7 +112,11 @@ do echo "Aller on tape un nombre"
 		    exec 3<test
 		    while read line 0<&3
 		    do
-			nbf=$(($nbf+1))
+			if [ $nbf -eq 0]
+			then 
+			    break
+			fi
+		        nbf=$(($nbf+1))
 			
 		    done
 		    echo "$USER = $nbr coup jouer" >> test
@@ -124,10 +131,10 @@ do echo "Aller on tape un nombre"
 	    echo "C'est plus grand"
 	else
 	    echo "C'est plus petit"
-fi
+	fi
     fi
     else
-	echo "J'attend une valeurs"
+	echo "J'attend une valeur entre 0 et 100"
 	nbr=$(($nbr-1))
     fi
     nbr=$(($nbr+1)) 
